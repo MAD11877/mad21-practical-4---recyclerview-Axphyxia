@@ -21,6 +21,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
     private final static String TAG= "Main Activity";
     private TextView madMessage;
+    private TextView madDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
         madMessage = findViewById(R.id.helloWorld);
         madMessage.setText(user1.getName());
+        madDescription = findViewById(R.id.loremText);
+        madDescription.setText("Description " + user1.getDescription());
 
         Button button = findViewById(R.id.button2);
         if (user1.followed == true){
