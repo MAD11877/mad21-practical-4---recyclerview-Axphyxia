@@ -13,6 +13,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
+import java.util.Random;
+
 //import stoof
 public class MainActivity extends AppCompatActivity {
     private final static String TAG= "Main Activity";
@@ -24,13 +28,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Intent receiveData = getIntent();
-        int raNo = receiveData.getIntExtra("Number", 0);
+        int id = receiveData.getIntExtra("Position", 0);
+        User user1 = ListActivity.userList.get(id);
 
         madMessage = findViewById(R.id.helloWorld);
-        madMessage.setText("MAD " + raNo);
+        madMessage.setText(user1.getName());
 
         Button button = findViewById(R.id.button2);
-        User user1 = new User("Jack", "Yes", 1, false);
         if (user1.followed == true){
             button.setText("Unfollow");
         }
@@ -57,4 +61,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private int randomNumber(){
+        Random ranInt = new Random();
+        int ranVal = ranInt.nextInt(1000000000);
+        return ranVal;
+    }
+
 }

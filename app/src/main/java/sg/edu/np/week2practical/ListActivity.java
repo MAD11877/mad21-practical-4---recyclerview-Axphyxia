@@ -3,6 +3,9 @@ package sg.edu.np.week2practical;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AlertDialogLayout;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,23 +15,40 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Button;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class ListActivity extends AppCompatActivity {
+    static ArrayList<User> userList = new ArrayList<User>();
     private final static String TAG= "List Activity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        ImageView middleButton = findViewById(R.id.middleButton);
+        //Populate list with 20 user objects
+        for(int i = 0;i < 20; i++){
 
-        middleButton.setOnClickListener(new View.OnClickListener(){
+            userList.add( new User("Name " + randomNumber(), "Description " + randomNumber(), randomNumber(), randomBool()));
+        }
+
+
+        RecyclerView recyclerView = findViewById(R.id.mainRecyclerView);
+        UserViewAdapter mAdapt = new UserViewAdapter(userList, this);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapt);
+
+
+        //ImageView middleButton = findViewById(R.id.middleButton);
+
+        /*middleButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 userQuery();
             }
-        });
+        });*/
     }
 
     private int randomNumber(){
@@ -37,7 +57,14 @@ public class ListActivity extends AppCompatActivity {
         return ranVal;
     }
 
-    private void userQuery(){
+    private Boolean randomBool(){
+        Random ranBool = new Random();
+        boolean ranBol = ranBool.nextBoolean();
+        return ranBol;
+    }
+
+    //Week 3 code
+    /*private void userQuery(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Madness");
         builder.setTitle("Profile");
@@ -65,6 +92,6 @@ public class ListActivity extends AppCompatActivity {
         AlertDialog alert = builder.create();
         alert.show();
 
-    }
+    }*/
 
 }

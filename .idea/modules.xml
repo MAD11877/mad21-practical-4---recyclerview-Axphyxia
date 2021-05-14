@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/mad21-practical-4---recyclerview-Axphyxia.iml" filepath="$PROJECT_DIR$/.idea/mad21-practical-4---recyclerview-Axphyxia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Week_2_Practical.iml" filepath="$PROJECT_DIR$/.idea/modules/Week_2_Practical.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Week_2_Practical.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Week_2_Practical.app.iml" />
     </modules>
   </component>
 </project>
